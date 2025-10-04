@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router';
-import { FaArrowRight } from "react-icons/fa";
+
 export const GroupCard = ({ group }) => {
     const { group_name, category, location, description, max_members, date, name, email, photo } = group;
     return (
@@ -14,7 +14,7 @@ export const GroupCard = ({ group }) => {
                         <p className=" text-base-200">{description}</p>
                     </div>
                    <Link  className="  py-4 font-semibold w-full  rounded-md bg-base-content border-base-100 btn">
-                   <h1 className='text-base-100 '>View Details <FaArrowRight /></h1>
+                   <h1 className='text-base-100  flex justify-center items-center gap-3'>View Details </h1>
                    </Link>
                 </div>
             </div>
