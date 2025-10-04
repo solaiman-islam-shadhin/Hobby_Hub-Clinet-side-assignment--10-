@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import React from 'react'
 import { ToastContainer } from 'react-toastify';
+import { Fade, Zoom } from 'react-awesome-reveal';
 
 export const CreatGroups = () => {
   const handleSubmit = (e) => {
@@ -30,16 +31,19 @@ export const CreatGroups = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className=" w-full  text-base-content rounded-lg mb-8">
-        <div className=" py-5 text-center">
-          <div>
-            <h1 className="text-5xl text-center font-bold">Create New Group</h1>
-            <p className="text-xl text-center mt-2">Start your hobby community today</p>
+      <Fade>
+        <div className=" w-full  text-base-content rounded-lg mb-8">
+          <div className=" py-5 text-center">
+            <div>
+              <h1 className="text-5xl text-center font-bold">Create New Group</h1>
+              <p className="text-xl text-center mt-2">Start your hobby community today</p>
+            </div>
           </div>
         </div>
-      </div>
+      </Fade>
 
-      <form onSubmit={handleSubmit} className="max-w-5xl mx-auto p-8">
+      <Fade>
+        <form onSubmit={handleSubmit} className="max-w-5xl mx-auto p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
@@ -121,10 +125,11 @@ export const CreatGroups = () => {
           </div>
         </div>
 
-        <button type="submit" className="py-3 hover:border-b-1 cursor-pointer font-semibold w-full card bg-base-100 shadow-xl btn-lg mt-8">
-          Create Group
-        </button>
-      </form>
+          <button type="submit" className="py-3 hover:border-b-1 cursor-pointer font-semibold w-full card bg-base-100 shadow-xl btn-lg mt-8">
+            Create Group
+          </button>
+        </form>
+      </Fade>
       <ToastContainer />
     </div>
   )

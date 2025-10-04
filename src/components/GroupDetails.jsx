@@ -1,5 +1,6 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { useLoaderData } from 'react-router'
+import { Fade, Slide } from 'react-awesome-reveal'
 
 export const GroupDetails = () => {
     const groupdata = useLoaderData();
@@ -14,7 +15,8 @@ export const GroupDetails = () => {
   
     return (
         <div className="max-w-4xl mx-auto p-6">
-            <div className="card bg-base-100 shadow-xl text-base-content rounded-lg mb-8">
+            <Fade>
+              <div className="card bg-base-100 shadow-xl text-base-content rounded-lg mb-8">
                 <div className="hero-content text-center ">
                     <div>
                           <div className="avatar w-52 my-5 ">
@@ -26,9 +28,11 @@ export const GroupDetails = () => {
                         <p className="text-xl mt-2">{category}</p>
                     </div>
                 </div>
-            </div>
+              </div>
+            </Fade>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <Slide direction="up" triggerOnce>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2 space-y-6">
                     <div className="card bg-base-100 shadow-xl">
                         <div className="card-body">
@@ -86,7 +90,8 @@ export const GroupDetails = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+              </div>
+            </Slide>
         </div>
     )
 }
