@@ -1,6 +1,8 @@
 @plugin "daisyui";
 @import "tailwindcss";
 
+
+
 [data-theme="dark"] {
   color-scheme: dark;
 }

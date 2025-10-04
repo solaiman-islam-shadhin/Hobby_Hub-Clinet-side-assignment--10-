@@ -6,7 +6,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="btn btn-ghost btn-circle"
+      className="btn border-base-content btn-circle"
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {theme === 'dark' ? '☀️' : '🌙'}

@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 export const Fotter = () => {
   return (
-    <footer className="  from-primary to-secondary border-t  border-base-content mt-5">
+    <footer className="  border-t  border-base-content mt-5">
       <div className="footer p-2 md:p-5 flex justify-between">
         <div>
           <h2 className="text-2xl font-bold">Hobby Hub</h2>
@@ -30,7 +30,7 @@ export const Fotter = () => {
           <Link to="/cookies" className="link link-hover">Cookie Policy</Link>
         </nav>
       </div>
-      <div className="footer footer-center p-4 bg-base-300 text-base-content border-t border-base-200">
+      <div className="footer footer-center p-4  text-base-content ">
         <aside className="flex items-center gap-4">
           <div className="flex gap-4">
             <a href="#" className="btn btn-circle btn-sm btn-ghost hover:btn-primary">

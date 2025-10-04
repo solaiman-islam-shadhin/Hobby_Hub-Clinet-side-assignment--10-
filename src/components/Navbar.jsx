@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import { ThemeToggle } from './ThemeToggle'
 
 export const Navbar = () => {
@@ -20,12 +20,12 @@ export const Navbar = () => {
             </svg>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-300  rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><Link className='link link-hover' to="/">Home</Link></li>
-            <li><Link className='link link-hover' to="/all-groups">All Groups</Link></li>
+            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/">Home</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/all-groups">All Groups</NavLink></li>
             {user && (
               <>
-                <li><Link className='link link-hover' to="/create-group">Create Group</Link></li>
-                <li><Link className='link link-hover' to="/my-groups">My Groups</Link></li>
+                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/create-group">Create Group</NavLink></li>
+                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/my-groups">My Groups</NavLink></li>
               </>
             )}
             {!user ? (
@@ -39,12 +39,12 @@ export const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="space-x-4 menu-horizontal px-1">
-          <li><Link className='link link-hover' to="/">Home</Link></li>
-          <li><Link className='link link-hover' to="/all-groups">All Groups</Link></li>
+          <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/">Home</NavLink></li>
+          <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/all-groups">All Groups</NavLink></li>
           {user && (
             <>
-              <li><Link className='link link-hover' to="/create-group">Create Group</Link></li>
-              <li><Link className='link link-hover' to="/my-groups">My Groups</Link></li>
+              <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/create-group">Create Group</NavLink></li>
+              <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/my-groups">My Groups</NavLink></li>
             </>
           )}
         </ul>
@@ -52,7 +52,7 @@ export const Navbar = () => {
       <div className="navbar-end gap-2">
         <ThemeToggle />
         {!user ? (
-          <Link to="/login" className="btn btn-primary">Login</Link>
+          <Link to="/login" className="btn px-10 hidden md:block text-center py-2 border-base-content">Login</Link>
         ) : (
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" title={user.displayName}>
