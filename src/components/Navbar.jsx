@@ -20,18 +20,18 @@ export const Navbar = () => {
             </svg>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-300  rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/">Home</NavLink></li>
-            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/all-groups">All Groups</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/">Home</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/all-groups">All Groups</NavLink></li>
             {user && (
               <>
-                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/create-group">Create Group</NavLink></li>
-                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/my-groups">My Groups</NavLink></li>
+                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/create-group">Create Group</NavLink></li>
+                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/my-groups">My Groups</NavLink></li>
               </>
             )}
             {!user ? (
-              <li><Link to="/login">Login/Register</Link></li>
+              <li><Link className="link link-hover font-semibold text-sm" to="/login">Login/Register</Link></li>
             ) : (
-              <li><button onClick={handleLogout}>Logout</button></li>
+              <li><button className="link link-hover font-semibold text-sm" onClick={handleLogout}>Logout</button></li>
             )}
           </ul>
         </div>
