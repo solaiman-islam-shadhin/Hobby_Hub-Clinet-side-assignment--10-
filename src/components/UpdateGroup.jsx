@@ -1,31 +1,13 @@
-import { toast } from 'react-toastify';
 import React from 'react'
-import { ToastContainer } from 'react-toastify';
 
-export const CreatGroups = () => {
-  const handleSubmit = (e) => {
+export const UpdateGroups = () => {
+const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    const GroupData = Object.fromEntries(formData.entries());
-    fetch("http://localhost:5000/createGroup", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(GroupData)
-    })
-      .then(res => res.json())
-      .then(data => {
-       if(data.insertedId){
-
-         toast.success("Group Created Successfully");
-       }
-       else{
-         toast.error("Failed to create group");
-       }
-      })
-    form.reset();
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  console.log(data);
+  form.reset();
   };
 
   return (
@@ -89,7 +71,7 @@ export const CreatGroups = () => {
             <label className="label">
               <span className="label-text font-semibold mb-2">User Name</span>
             </label>
-            <input type="text" name="name" className="input focus:outline-none outline-none border-base-content focus:border-base-content" required />
+            <input type="text" name="name"  className="input focus:outline-none outline-none border-base-content focus:border-base-content" required />
           </div>
 
           <div className="form-control">
@@ -111,7 +93,6 @@ export const CreatGroups = () => {
           Create Group
         </button>
       </form>
-      <ToastContainer />
     </div>
   )
 }
