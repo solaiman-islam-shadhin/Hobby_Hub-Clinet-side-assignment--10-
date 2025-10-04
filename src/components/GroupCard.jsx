@@ -1,0 +1,23 @@
+import React from 'react'
+import { Link } from 'react-router';
+import { FaArrowRight } from "react-icons/fa";
+export const GroupCard = ({ group }) => {
+    const { group_name, category, location, description, max_members, date, name, email, photo } = group;
+    return (
+        <div>
+            <div className="w-full rounded-md shadow-md bg-base-content">
+                <img src={photo} alt="" className="object-cover object-center w-full rounded-t-md h-72 " />
+                <div className="flex flex-col justify-between p-6 space-y-8">
+                    <div className="space-y-2">
+                        <h2 className="text-2xl text-base-200 font-semibold tracking-wide">{group_name.toUpperCase()}</h2>
+                        <p className=" text-base-200">{"Category: " + category}</p>
+                        <p className=" text-base-200">{description}</p>
+                    </div>
+                   <Link  className="  py-4 font-semibold w-full  rounded-md bg-base-content border-base-100 btn">
+                   <h1 className='text-base-100 '>View Details <FaArrowRight /></h1>
+                   </Link>
+                </div>
+            </div>
+        </div>
+    )
+}
