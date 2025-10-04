@@ -11,7 +11,7 @@ export const Navbar = () => {
   }
 
   return (
-    <div className="navbar container mx-auto border-b-1 dark:border-white mt-5  shadow-sm">
+    <div className="navbar container mx-auto border-b-1 border-base-content my-5 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -19,13 +19,13 @@ export const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/all-groups">All Groups</Link></li>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-300  rounded-box z-1 mt-3 w-52 p-2 shadow">
+            <li><Link className='link link-hover' to="/">Home</Link></li>
+            <li><Link className='link link-hover' to="/all-groups">All Groups</Link></li>
             {user && (
               <>
-                <li><Link to="/create-group">Create Group</Link></li>
-                <li><Link to="/my-groups">My Groups</Link></li>
+                <li><Link className='link link-hover' to="/create-group">Create Group</Link></li>
+                <li><Link className='link link-hover' to="/my-groups">My Groups</Link></li>
               </>
             )}
             {!user ? (
@@ -35,16 +35,16 @@ export const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">Hobby Hub</Link>
+        <Link to="/" className=" text-xl">Hobby Hub</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/all-groups">All Groups</Link></li>
+        <ul className="space-x-4 menu-horizontal px-1">
+          <li><Link className='link link-hover' to="/">Home</Link></li>
+          <li><Link className='link link-hover' to="/all-groups">All Groups</Link></li>
           {user && (
             <>
-              <li><Link to="/create-group">Create Group</Link></li>
-              <li><Link to="/my-groups">My Groups</Link></li>
+              <li><Link className='link link-hover' to="/create-group">Create Group</Link></li>
+              <li><Link className='link link-hover' to="/my-groups">My Groups</Link></li>
             </>
           )}
         </ul>

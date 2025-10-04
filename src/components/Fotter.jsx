@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 export const Fotter = () => {
   return (
-    <footer className="  from-primary to-secondary border-t  dark:border-white">
+    <footer className="  from-primary to-secondary border-t  border-base-content mt-5">
       <div className="footer p-2 md:p-5 flex justify-between">
         <div>
           <h2 className="text-2xl font-bold">Hobby Hub</h2>
