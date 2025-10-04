@@ -1,11 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React, { useContext, useState } from 'react'
+import { Link, Navigate } from 'react-router'
 import { Fade } from 'react-awesome-reveal'
+import { AuthContext } from '../Context/AuthContext'
+import { toast, ToastContainer } from 'react-toastify'
 
 export const Login = () => {
+  const [error, setError] = useState('')
+const {loginUser}=useContext(AuthContext);
+
+
+  const validatePassword = (password) => {
+    if (password.length < 6) {
+      return 'Password must be at least 6 characters long'
+    }
+    if (!/[A-Z]/.test(password)) {
+      return 'Password must contain at least one uppercase letter'
+    }
+    if (!/[a-z]/.test(password)) {
+      return 'Password must contain at least one lowercase letter'
+    }
+    return ''
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Add login logic here
+    setError('')
+    const formdata = new FormData(e.target)
+    const password = formdata.get('password')
+    const email = formdata.get('email')
+    
+    const validationError = validatePassword(password)
+    if (validationError) {
+      setError(validationError)
+      return
+    }
+    
+    loginUser(email,password)
+    .then((userCredential) => {
+      console.log(userCredential)
+      toast.success("User Logged In Successfully");
+      <Navigate to='/' replace={true}></Navigate>
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+    
   }
 
   return (
@@ -18,7 +57,7 @@ export const Login = () => {
           </div>
         </div>
       </Fade>
-
+<ToastContainer/>
       <Fade direction='up' triggerOnce>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-8">
           <div className="card bg-base-100 shadow-xl mb-6">
@@ -46,6 +85,12 @@ export const Login = () => {
               />
             </div>
           </div>
+
+          {error && (
+            <div className="alert alert-error mb-6">
+              <span>{error}</span>
+            </div>
+          )}
 
           <button
             type="submit"
