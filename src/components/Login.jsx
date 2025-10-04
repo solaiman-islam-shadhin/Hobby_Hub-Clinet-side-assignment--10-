@@ -10,17 +10,17 @@ export const Login = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <Fade>
-        <div className="w-full text-base-content rounded-lg mb-8">
+      <Fade direction='down' triggerOnce>
+        <div className="w-full text-base-content rounded-lg ">
           <div className="py-5 text-center">
-            <h1 className="text-5xl font-bold">Welcome Back!</h1>
-            <p className="text-xl mt-2">Login to your Hobby Hub account</p>
+           
+            <p className="text-2xl font-semibold  mt-2">Login to your Hobby Hub account</p>
           </div>
         </div>
       </Fade>
 
-      <Fade>
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-8">
+      <Fade direction='up' triggerOnce>
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-8">
           <div className="card bg-base-100 shadow-xl mb-6">
             <div className="card-body">
               <h3 className="card-title">📧 Email</h3>

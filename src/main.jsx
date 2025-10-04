@@ -11,6 +11,7 @@ import { NotFound } from './components/NotFound.jsx'
 import Root from './Root/Root.jsx'
 import { ThemeProvider } from './components/ThemeProvider.jsx'
 import { AllGroups } from './components/AllGroups.jsx'
+import { AuthProvider } from './Context/AuthProvider.jsx'
 
 const router = createBrowserRouter([
   {
@@ -54,8 +55,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider attribute="data-theme" defaultTheme="light" themes={['light', 'dark']}>
+    <AuthProvider>
+      <ThemeProvider attribute="data-theme" defaultTheme="light" themes={['light', 'dark']}>
       <RouterProvider router={router} />
     </ThemeProvider>
+    </AuthProvider>
   </StrictMode>,
 )

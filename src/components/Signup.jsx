@@ -10,17 +10,17 @@ export const Signup = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <Fade>
-        <div className="w-full text-base-content rounded-lg mb-8">
+      <Fade direction='down' triggerOnce>
+        <div className="w-full text-base-content rounded-lg ">
           <div className="py-5 text-center">
-            <h1 className="text-5xl font-bold">Join Hobby Hub!</h1>
+            <h1 className="text-4xl font-bold">Join Hobby Hub!</h1>
             <p className="text-xl mt-2">Create your account and start connecting</p>
           </div>
         </div>
       </Fade>
 
-      <Fade>
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-8">
+      <Fade direction='up' triggerOnce>
+        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="card bg-base-100 shadow-xl">
               <div className="card-body">
