@@ -15,7 +15,7 @@ export const GroupCard = ({ group }) => {
                         <p className=" text-base-200">{"Category: " + category}</p>
                         <p className=" text-base-200 truncate">{description}</p>
                     </div>
-                   <Link to={`/dashboard/groupdetails/${_id}`} className="  py-4 font-semibold w-full  rounded-md bg-base-content border-base-100 btn">
+                   <Link to={`/groupdetails/${_id}`} className="  py-4 font-semibold w-full  rounded-md bg-base-content border-base-100 btn">
                    <h1 className='text-base-100  flex justify-center items-center gap-3 '>View Details </h1>
                    </Link>
                 </div>

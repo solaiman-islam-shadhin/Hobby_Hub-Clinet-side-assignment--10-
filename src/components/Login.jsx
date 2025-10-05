@@ -1,13 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState,  } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { Fade } from 'react-awesome-reveal'
 import { AuthContext } from '../Context/AuthContext'
-
+import { toast } from 'react-toastify'
 
 export const Login = () => {
   const [error, setError] = useState('')
-  const { loginUser,googleLogin } = useContext(AuthContext)
+  const [loading, setLoading] = useState(false)
+  const { loginUser, googleLogin,  } = useContext(AuthContext)
   const navigate = useNavigate()
+
+  
 
 
   const validatePassword = (password) => {
@@ -36,14 +39,16 @@ export const Login = () => {
       return
     }
 
+    setLoading(true)
     loginUser(email, password)
-      .then((res) => {  
-        console.log(res)
-     navigate('/');
-       
+      .then((res) => {
+        toast.success('Welcome back boss!')
+        navigate('/dashboard')
+        setLoading(false) // <-- FIX APPLIED HERE
       })
       .catch((error) => {
         setError(error.message)
+        setLoading(false)
       })
 
   }
@@ -51,7 +56,13 @@ export const Login = () => {
 
 
   const handleGoogle = () => {
+    setLoading(true)
     googleLogin()
+      .then(() => {
+        toast.success('Welcome back boss!')
+        setLoading(false) // <-- FIX APPLIED HERE
+      })
+      .catch(() => setLoading(false))
   }
 
   return (
@@ -64,7 +75,7 @@ export const Login = () => {
           </div>
         </div>
       </Fade>
-     
+
       <Fade direction='up' triggerOnce>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-8">
           <div className="card bg-base-100 shadow-xl mb-6">
@@ -102,18 +113,21 @@ export const Login = () => {
           <button
             type="submit"
             className="py-3 hover:border-b-1 cursor-pointer font-semibold w-full card bg-base-100 shadow-xl btn-lg"
+            disabled={loading}
           >
-            Login
+            {loading ? <span className="loading loading-spinner"></span> : 'Login'}
           </button>
 
           <div className="divider mt-8">OR</div>
 
           <button
-          onClick={handleGoogle}
+            onClick={handleGoogle}
             type="button"
             className="btn btn-outline w-full btn-lg gap-2"
-            
+            disabled={loading}
           >
+            {/* This loading spinner logic is fine as it checks the state before rendering */}
+            {loading && <span className="loading loading-spinner"></span>}
             <svg className="w-6 h-6" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />

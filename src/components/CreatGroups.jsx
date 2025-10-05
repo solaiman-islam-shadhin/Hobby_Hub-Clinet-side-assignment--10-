@@ -5,7 +5,7 @@ import { Fade, Zoom } from 'react-awesome-reveal';
 import { AuthContext } from '../Context/AuthContext';
 
 export const CreatGroups = () => {
-const {user}=useContext(AuthContext)
+const {user,userdata}=useContext(AuthContext)
 console.log(user)
 
   const handleSubmit = (e) => {
@@ -110,7 +110,7 @@ console.log(user)
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
               <h3 className="card-title">👤 User Name</h3>
-              <input type="text" name="name" value={user.displayName || user.name} className="input w-full  focus:outline-none outline-none border-base-content focus:border-base-content" required readOnly />
+              <input type="text" name="name" value={user.displayName || userdata.name} className="input w-full  focus:outline-none outline-none border-base-content focus:border-base-content" required readOnly />
             </div>
           </div>
 

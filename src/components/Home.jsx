@@ -12,7 +12,6 @@ import { AuthContext } from '../Context/AuthContext';
 export const Home = () => {
   const groupdata = useLoaderData().slice(0, 6);
 
-
   return (
     <div>
       {/* Welcome Hero Section */}

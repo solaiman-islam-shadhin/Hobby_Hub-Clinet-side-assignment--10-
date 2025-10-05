@@ -10,6 +10,15 @@ export const Dashboard = () => {
         <ul className="menu space-y-2">
           <li>
             <NavLink 
+              to="/dashboard" 
+              end
+              className={({isActive}) => isActive ? 'active bg-primary text-primary-content' : ''}
+            >
+              👤 Profile
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
               to="/dashboard/create-group" 
               className={({isActive}) => isActive ? 'active bg-primary text-primary-content' : ''}
             >
