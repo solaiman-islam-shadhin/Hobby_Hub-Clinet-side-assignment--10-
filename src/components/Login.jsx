@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { Fade } from 'react-awesome-reveal'
 import { AuthContext } from '../Context/AuthContext'
-import { toast, ToastContainer } from 'react-toastify'
+
 
 export const Login = () => {
   const [error, setError] = useState('')
-  const { loginUser } = useContext(AuthContext)
+  const { loginUser,googleLogin } = useContext(AuthContext)
   const navigate = useNavigate()
 
 
@@ -37,18 +37,21 @@ export const Login = () => {
     }
 
     loginUser(email, password)
-      .then((res) => {
-          
+      .then((res) => {  
         console.log(res)
      navigate('/');
        
-
-      
       })
       .catch((error) => {
         setError(error.message)
       })
 
+  }
+
+
+
+  const handleGoogle = () => {
+    googleLogin()
   }
 
   return (
@@ -61,7 +64,7 @@ export const Login = () => {
           </div>
         </div>
       </Fade>
-      <ToastContainer />
+     
       <Fade direction='up' triggerOnce>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-8">
           <div className="card bg-base-100 shadow-xl mb-6">
@@ -106,9 +109,10 @@ export const Login = () => {
           <div className="divider mt-8">OR</div>
 
           <button
+          onClick={handleGoogle}
             type="button"
             className="btn btn-outline w-full btn-lg gap-2"
-            onClick={() => {/* Add Google login logic */ }}
+            
           >
             <svg className="w-6 h-6" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

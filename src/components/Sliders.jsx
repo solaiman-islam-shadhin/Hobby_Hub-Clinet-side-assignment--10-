@@ -23,7 +23,7 @@ return (
       centeredSlides={true}
       // Autoplay settings
       autoplay={{
-        delay: 2000, // Time in ms
+        delay: 2500, // Time in ms
         disableOnInteraction: false,
       }}
       // Pagination dots

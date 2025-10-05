@@ -1,9 +1,13 @@
 import { toast } from 'react-toastify';
-import React from 'react'
+import React, { useContext } from 'react'
 import { ToastContainer } from 'react-toastify';
 import { Fade, Zoom } from 'react-awesome-reveal';
+import { AuthContext } from '../Context/AuthContext';
 
 export const CreatGroups = () => {
+const {user}=useContext(AuthContext)
+console.log(user)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -106,14 +110,14 @@ export const CreatGroups = () => {
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
               <h3 className="card-title">👤 User Name</h3>
-              <input type="text" name="name" className="input w-full  focus:outline-none outline-none border-base-content focus:border-base-content" required />
+              <input type="text" name="name" value={user.displayName || user.name} className="input w-full  focus:outline-none outline-none border-base-content focus:border-base-content" required readOnly />
             </div>
           </div>
 
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body">
               <h3 className="card-title">📧 User Email</h3>
-              <input type="email" name="email" className="input w-full  focus:outline-none outline-none border-base-content focus:border-base-content" required />
+              <input type="email" value={user.email} name="email" className="input w-full  focus:outline-none outline-none border-base-content focus:border-base-content" required readOnly />
             </div>
           </div>
         </div>

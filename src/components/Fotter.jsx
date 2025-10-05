@@ -13,8 +13,6 @@ export const Fotter = () => {
           <h6 className="footer-title">Platform</h6>
           <Link to="/" className="link link-hover">Home</Link>
           <Link to="/all-groups" className="link link-hover">Browse Groups</Link>
-          <Link to="/create-group" className="link link-hover">Create Group</Link>
-          <Link to="/my-groups" className="link link-hover">My Groups</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Support</h6>

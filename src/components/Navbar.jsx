@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, } from 'react'
 import { Link, NavLink } from 'react-router'
 import { ThemeToggle } from './ThemeToggle'
+import { AuthContext } from '../Context/AuthContext'
 
 export const Navbar = () => {
-  // Mock user state - replace with actual auth logic
-  const [user, setUser] = useState(null) // { photoURL: 'url', displayName: 'name' }
-  
+  const {user,setUser}=useContext(AuthContext)  
   const handleLogout = () => {
     setUser(null)
   }
@@ -23,10 +22,7 @@ export const Navbar = () => {
             <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/">Home</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/all-groups">All Groups</NavLink></li>
             {user && (
-              <>
-                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/create-group">Create Group</NavLink></li>
-                <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/my-groups">My Groups</NavLink></li>
-              </>
+              <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/dashboard/my-groups">Dashboard</NavLink></li>
             )}
             {!user ? (
               <li><Link className="link link-hover font-semibold text-sm" to="/login">Login/Register</Link></li>
@@ -42,10 +38,7 @@ export const Navbar = () => {
           <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/">Home</NavLink></li>
           <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/all-groups">All Groups</NavLink></li>
           {user && (
-            <>
-              <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/create-group">Create Group</NavLink></li>
-              <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/my-groups">My Groups</NavLink></li>
-            </>
+            <li><NavLink className={({isActive}) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/dashboard/my-groups">Dashboard</NavLink></li>
           )}
         </ul>
       </div>
