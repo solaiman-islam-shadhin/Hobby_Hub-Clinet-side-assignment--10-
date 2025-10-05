@@ -34,20 +34,20 @@ console.log(user)
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto md:p-6">
       <Fade>
         <div className=" w-full  text-base-content rounded-lg mb-8">
           <div className=" py-5 text-center">
             <div>
-              <h1 className="text-5xl text-center font-bold">Create New Group</h1>
-              <p className="text-xl text-center mt-2">Start your hobby community today</p>
+              <h1 className="text-2xl md:text-5xl text-center font-bold">Create New Group</h1>
+              <p className="text-lg md:text-xl md:text-center mt-2">Start your hobby community today</p>
             </div>
           </div>
         </div>
       </Fade>
 
       <Fade>
-        <form onSubmit={handleSubmit} className="max-w-5xl mx-auto p-8">
+        <form onSubmit={handleSubmit} className="max-w-5xl mx-auto  md:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="card bg-base-100 shadow-xl">
             <div className="card-body">

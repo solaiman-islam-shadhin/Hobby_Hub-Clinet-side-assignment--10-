@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Fade } from 'react-awesome-reveal'
 import { AuthContext } from '../Context/AuthContext'
 import { Link } from 'react-router'
+import Swal from 'sweetalert2'
 
 export const MyGroups = () => {
   const { user } = useContext(AuthContext)
@@ -17,27 +18,57 @@ export const MyGroups = () => {
     }
   }, [user])
 
+const handleUpdate =() =>{
+
+}
+
+
   const handleDelete = (id) => {
-    if (confirm('Are you sure you want to delete this group?')) {
-      fetch(`http://localhost:5000/groups/${id}`, {
-        method: 'DELETE'
-      })
-      .then(() => {
-        setGrpData(grpData.filter(group => group._id !== id))
-      })
-    }
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        fetch(`http://localhost:5000/group/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id })
+        })
+          .then(() => {
+            setGrpData(grpData.filter(group => group._id !== id))
+          })
+
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
   }
+
+
 
   return (
     <div>
       <Fade>
         <h1 className="text-3xl font-bold mb-6">My Groups</h1>
-        
+
         {grpData.length === 0 ? (
           <p>No groups created yet</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table table-zebra w-full">
+            <table className="table table-zebra w-full table-xs sm:table-sm md:table-md">
               <thead>
                 <tr>
                   <th>Group Name</th>
@@ -67,16 +98,16 @@ export const MyGroups = () => {
                     <td>{group.location}</td>
                     <td>{group.max_members}</td>
                     <td>
-                      <div className="flex gap-2">
-                        <Link 
+                      <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
+                        <Link
                           to={`/dashboard/update-group/${group._id}`}
-                          className="btn btn-sm btn-primary"
+                          className="btn btn-xs sm:btn-sm btn-primary"
                         >
                           Update
                         </Link>
-                        <button 
+                        <button
                           onClick={() => handleDelete(group._id)}
-                          className="btn btn-sm btn-error"
+                          className="btn btn-xs sm:btn-sm btn-error"
                         >
                           Delete
                         </button>

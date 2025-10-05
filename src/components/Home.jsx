@@ -42,10 +42,10 @@ export const Home = () => {
                 connect with like-minded people, and turn your passions into lasting friendships.
               </p>
               <div className="flex gap-4">
-                <Link to="/all-groups" className="btn btn-accent text-base-content btn-lg">
+                <Link to="/all-groups" className="btn btn-primary text-white btn-lg">
                   Explore Groups
                 </Link>
-                <Link to="/create-group" className="btn btn-outline btn-lg">
+                <Link to="/dashboard/create-group" className="btn btn-outline btn-lg">
                   Create Group
                 </Link>
               </div>
@@ -72,7 +72,7 @@ export const Home = () => {
           </div>
 
           <div className="text-center mb-10">
-            <Link to="/all-groups" className="btn btn-accent text-base-content btn-lg">
+            <Link to="/all-groups" className="btn btn-primary text-white btn-lg">
               View All Groups
             </Link>
           </div>

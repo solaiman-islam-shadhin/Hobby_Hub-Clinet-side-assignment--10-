@@ -16,6 +16,7 @@ import { Dashboard } from './components/Dashboard.jsx'
 import { MyGroups } from './components/MyGroups.jsx'
 import { PrivateRoute } from './components/PrivateRoute.jsx'
 import { Profile } from './components/Profile.jsx'
+import { UpdateGroup } from './components/UpdateGroup.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: () => fetch('http://localhost:5000/groups'),
-       Component: Home
+        Component: Home
       },
       {
         path: 'login',
@@ -37,14 +38,14 @@ const router = createBrowserRouter([
       },
       {
         path: 'all-groups',
-       loader: () => fetch('http://localhost:5000/groups'),
-        Component:AllGroups
+        loader: () => fetch('http://localhost:5000/groups'),
+        Component: AllGroups
       },
-       {
-            path: 'groupdetails/:id',
-            loader: ({ params }) => fetch(`http://localhost:5000/group-details/${params.id}`),
-            element: <PrivateRoute><GroupDetails /></PrivateRoute>
-          },
+      {
+        path: 'groupdetails/:id',
+        loader: ({ params }) => fetch(`http://localhost:5000/group-details/${params.id}`),
+        element: <PrivateRoute><GroupDetails /></PrivateRoute>
+      },
       {
         path: 'dashboard',
         element: <PrivateRoute><Dashboard /></PrivateRoute>,
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
           {
             path: 'create-group',
             element: <CreatGroups />
+          },
+          {
+            path: 'update-group/:id',
+            loader: ({ params }) => fetch(`http://localhost:5000/group-details/${params.id}`),
+            Component:UpdateGroup
           },
           {
             path: 'my-groups',
@@ -75,8 +81,8 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <ThemeProvider attribute="data-theme" defaultTheme="light" themes={['light', 'dark']}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </AuthProvider>
   </StrictMode>,
 )

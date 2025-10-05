@@ -7,7 +7,7 @@ import { toast, ToastContainer } from 'react-toastify'
 
 export const Navbar = () => {
   const { user, setUser, logout,userdata,setUserdata } = useContext(AuthContext)
- 
+
 const handleLogout = () => {
   logout().then(() => {
     // All actions now happen *after* successful logout
@@ -40,10 +40,10 @@ const handleLogout = () => {
             </svg>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-300  rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/">Home</NavLink></li>
-            <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/all-groups">All Groups</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-primary font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/">Home</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-primary font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/all-groups">All Groups</NavLink></li>
             {user && (
-              <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-accent font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/dashboard/my-groups">Dashboard</NavLink></li>
+              <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-primary font-semibold text-sm' : 'link link-hover font-semibold text-sm'} to="/dashboard/my-groups">Dashboard</NavLink></li>
             )}
             {!user ? (
               <li><Link className="link link-hover font-semibold text-sm" to="/login">Login/Register</Link></li>
@@ -52,14 +52,14 @@ const handleLogout = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className=" text-xl">Hobby Hub</Link>
+        <Link to="/" className=" text-xl md:text-2xl md:font-semibold text-primary">Hobby Hub</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="space-x-4 menu-horizontal px-1">
-          <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/">Home</NavLink></li>
-          <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/all-groups">All Groups</NavLink></li>
+          <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-primary font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/">Home</NavLink></li>
+          <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-primary font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/all-groups">All Groups</NavLink></li>
           {user && (
-            <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-accent font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/dashboard">Dashboard</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? 'link link-hover text-primary font-semibold text-xl' : 'link link-hover font-semibold text-xl'} to="/dashboard">Dashboard</NavLink></li>
           )}
         </ul>
       </div>
@@ -71,7 +71,7 @@ const handleLogout = () => {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-left" data-tip={user.displayName || userdata.name}>
               <div className="w-10 rounded-full">
-                <img src={user.photoURL || '/default-avatar.png'} alt={user.displayName || userdata.name} />
+                <img src={user.photoURL || userdata.photo || '/default-avatar.png'} alt={user.displayName || userdata.name} />
               </div>
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow">

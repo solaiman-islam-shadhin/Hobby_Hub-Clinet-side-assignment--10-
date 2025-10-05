@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLoaderData } from 'react-router'
+import { Link, useLoaderData } from 'react-router'
 import { Fade, Slide } from 'react-awesome-reveal'
 
 export const GroupDetails = () => {
@@ -14,7 +14,7 @@ export const GroupDetails = () => {
     }
   
     return (
-        <div className="max-w-4xl mx-auto p-6">
+        <div className="max-w-4xl mx-auto md:p-6">
             <Fade>
               <div className="card bg-base-100 shadow-xl text-base-content rounded-lg mb-8">
                 <div className="hero-content text-center ">
@@ -24,7 +24,7 @@ export const GroupDetails = () => {
                                     <img className='rounded-full' src={photo || '/default-avatar.png'} alt={name} />
                                 
                             </div>
-                        <h1 className="text-5xl font-bold mb-2">{group_name.toUpperCase()}</h1>
+                        <h1 className="text-2xl md:text-4xl font-bold mb-2">{group_name.toUpperCase()}</h1>
                         <p className="text-xl mt-2">{category}</p>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ export const GroupDetails = () => {
                         <div className="card-body">{
                             datedata ? <button className="btn btn-accent btn-lg w-full">Join Group</button> : <button disabled className="btn btn-accent btn-lg w-full ">NO Longer Active</button>}
                             
-                            <button className="btn btn-outline w-full mt-2">Contact Leader</button>
+                            <Link to="/dashboard/create-group" className="btn btn-outline w-full mt-2">Create Group</Link>
                         </div>
                     </div>
                 </div>
