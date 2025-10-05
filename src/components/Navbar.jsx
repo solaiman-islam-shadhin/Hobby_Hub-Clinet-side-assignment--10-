@@ -1,19 +1,17 @@
-import { useNavigate } from 'react-router'
-import React, { useContext, useEffect, useState } from 'react'
+
+import React, { useContext, useEffect,  } from 'react'
 import { Link, NavLink } from 'react-router'
 import { ThemeToggle } from './ThemeToggle'
 import { AuthContext } from '../Context/AuthContext'
 import { toast, ToastContainer } from 'react-toastify'
 
 export const Navbar = () => {
-  const navigate = useNavigate();
   const { user, setUser, logout,userdata,setUserdata } = useContext(AuthContext)
  
 const handleLogout = () => {
   logout().then(() => {
     // All actions now happen *after* successful logout
-    setUser(null); 
-    navigate('/login');
+    setUser(null);
     toast.success('Logged out successfully');
   }).catch((error) => {
     // Handle potential errors during logout
