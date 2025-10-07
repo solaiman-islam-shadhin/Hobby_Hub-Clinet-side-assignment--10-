@@ -10,7 +10,7 @@ export const MyGroups = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:5000/my-groups/${user.email}`)
+      fetch(`https://assignment-10-server-side-woad.vercel.app/my-groups/${user.email}`)
         .then(res => res.json())
         .then(data => {
           setGrpData(data)
@@ -36,7 +36,7 @@ const handleUpdate =() =>{
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/group/${id}`, {
+        fetch(`https://assignment-10-server-side-woad.vercel.app/group/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

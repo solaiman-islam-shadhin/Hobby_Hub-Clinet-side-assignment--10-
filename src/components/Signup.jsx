@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router'
 import { Fade } from 'react-awesome-reveal'
 import { AuthContext } from '../Context/AuthContext'
 import { toast, ToastContainer } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 export const Signup = () => {
   const [error, setError] = useState('')
@@ -49,7 +50,7 @@ export const Signup = () => {
     setLoading(true)
     createUser(email, password)
       .then((result) => {
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-10-server-side-woad.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json"
@@ -57,7 +58,16 @@ export const Signup = () => {
           body: JSON.stringify(userInfo)
         })
           .then(res => res.json())
-        toast.success("User Created Successfully");
+          .then(data => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1000
+            });
+          })
+
         navigate('/dashboard');
       })
       .catch((error) => {
@@ -73,7 +83,7 @@ export const Signup = () => {
     setJustSignedUp(true)
     googleLogin()
       .then(() => {
-         navigate('/dashboard')
+        navigate('/dashboard')
         toast.success('Welcome back boss!')
       })
       .catch(() => setLoading(false))

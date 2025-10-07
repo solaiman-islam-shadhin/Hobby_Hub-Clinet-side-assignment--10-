@@ -36,7 +36,7 @@ const logout = () =>{
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 
-                fetch("http://localhost:5000/users", {
+                fetch("https://assignment-10-server-side-woad.vercel.app/users", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

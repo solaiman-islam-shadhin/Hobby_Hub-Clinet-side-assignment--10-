@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Context/AuthContext'
+import { CgLayoutGrid } from 'react-icons/cg'
 
 export const Profile = () => {
   const { user } = useContext(AuthContext)
@@ -7,7 +8,7 @@ export const Profile = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:5000/users/${user.email}`)
+      fetch(`https://assignment-10-server-side-woad.vercel.app/users/${user.email}`)
         .then(res => res.json())
         .then(data => setUserData(data))
     }
@@ -22,7 +23,7 @@ export const Profile = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6">
             <div className="avatar">
               <div className="w-20 sm:w-24 rounded-full">
-                <img src={user?.photoURL || '/default-avatar.png'} alt="Profile" />
+                <img src={user?.photoURL || userData?.photoURL || userData?.photo || '/default-avatar.png'} alt="Profile" />
               </div>
             </div>
             <div className="text-center sm:text-left">

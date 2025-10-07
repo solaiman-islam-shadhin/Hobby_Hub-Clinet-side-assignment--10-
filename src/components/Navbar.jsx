@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify'
 export const Navbar = () => {
   const { user, setUser, logout,userdata,setUserdata } = useContext(AuthContext)
 
+
 const handleLogout = () => {
   logout().then(() => {
     // All actions now happen *after* successful logout
@@ -20,7 +21,7 @@ const handleLogout = () => {
 }
   useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:5000/users/${user.email}`)
+      fetch(`https://assignment-10-server-side-woad.vercel.app/users/${user.email}`)
         .then(res => res.json())
         .then(data => {
           setUserdata(data)
@@ -71,7 +72,7 @@ const handleLogout = () => {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-left" data-tip={user.displayName || userdata.name}>
               <div className="w-10 rounded-full">
-                <img src={user.photoURL || userdata.photo || '/default-avatar.png'} alt={user.displayName || userdata.name} />
+                <img src={user?.photoURL || userdata?.photo || userdata?.photoURL} alt={user.displayName || userdata.name} />
               </div>
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow">

@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('http://localhost:5000/groups'),
+        loader: () => fetch('https://assignment-10-server-side-woad.vercel.app/groups'),
         Component: Home
       },
       {
@@ -38,12 +38,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'all-groups',
-        loader: () => fetch('http://localhost:5000/groups'),
+        loader: () => fetch('https://assignment-10-server-side-woad.vercel.app/groups'),
         Component: AllGroups
       },
       {
         path: 'groupdetails/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/group-details/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment-10-server-side-woad.vercel.app/group-details/${params.id}`),
         element: <PrivateRoute><GroupDetails /></PrivateRoute>
       },
       {
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'update-group/:id',
-            loader: ({ params }) => fetch(`http://localhost:5000/group-details/${params.id}`),
+            loader: ({ params }) => fetch(`https://assignment-10-server-side-woad.vercel.app/group-details/${params.id}`),
             Component:UpdateGroup
           },
           {

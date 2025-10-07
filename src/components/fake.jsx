@@ -8,7 +8,7 @@ export const CreatGroups = () => {
     const form = e.target;
     const formData = new FormData(form);
     const GroupData = Object.fromEntries(formData.entries());
-    fetch("http://localhost:5000/createGroup", {
+    fetch("https://assignment-10-server-side-woad.vercel.app/createGroup", {
       method: "POST",
       headers: {
         "content-type": "application/json"

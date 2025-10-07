@@ -15,7 +15,7 @@ export const UpdateGroup = () => {
     const form = e.target;
     const formData = new FormData(form);
     const GroupData = Object.fromEntries(formData.entries());
-    fetch(`http://localhost:5000/group-details/${userData._id}`, {
+    fetch(`https://assignment-10-server-side-woad.vercel.app/group-details/${userData._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json"
@@ -24,8 +24,6 @@ export const UpdateGroup = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-         
         if (data.modifiedCount) {
 
           toast.success("Group update Successfully");
@@ -40,20 +38,20 @@ export const UpdateGroup = () => {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto md:p-6">
       <Fade>
-        <div className=" w-full  text-base-content rounded-lg mb-8">
+        <div className=" w-full  text-base-content rounded-lg mb-6">
           <div className=" py-5 text-center">
             <div>
-              <h1 className="text-5xl text-center font-bold">Create New Group</h1>
-              <p className="text-xl text-center mt-2">Start your hobby community today</p>
+              <h1 className=" text-2xl md:text-4xl text-center font-bold">Update Group</h1>
+            
             </div>
           </div>
         </div>
       </Fade>
 
       <Fade>
-        <form onSubmit={handleSubmit} className="max-w-5xl mx-auto p-8">
+        <form onSubmit={handleSubmit} className="max-w-5xl mx-auto md:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="card bg-base-100 shadow-xl">
               <div className="card-body">
