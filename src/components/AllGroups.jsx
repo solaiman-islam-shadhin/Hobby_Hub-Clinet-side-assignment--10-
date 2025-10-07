@@ -3,7 +3,8 @@ import { Link, useLoaderData } from 'react-router';
 import { Slide, Fade } from 'react-awesome-reveal';
 
 export const AllGroups = () => {
-    const allgroupdata = useLoaderData();
+    const loaderData = useLoaderData();
+    const allgroupdata = Array.isArray(loaderData) ? loaderData : [];
     return (
         <div>
             <Fade>

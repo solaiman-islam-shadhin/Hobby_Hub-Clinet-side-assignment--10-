@@ -10,7 +10,8 @@ import { AuthContext } from '../Context/AuthContext';
 
 
 export const Home = () => {
-  const groupdata = useLoaderData().slice(0, 6);
+  const loaderData = useLoaderData();
+  const groupdata = Array.isArray(loaderData) ? loaderData.slice(0, 6) : [];
 
   return (
     <div>
